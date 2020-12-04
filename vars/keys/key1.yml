@@ -1,0 +1,4 @@
+key1:
+  type: 'file-raw'
+  keyType: 'BLS'
+  privateKey: '0x6eeb32dd0fe010051825e3ef409b1a7c66ff6daa9c61eb351c5d760684de8e6a'

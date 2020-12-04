@@ -1,0 +1,28 @@
+- name: Web3Signer Installation
+  hosts: web3signer
+  remote_user: vagrant
+  vars_files:
+    - 'vars/web3signer.yml'
+
+  pre_tasks:
+    # Keys need to be loaded to variable `web3signer_keys`
+    # Individual files created for each key
+    - name: Pre-task | Include validator keys var files
+      include_vars:
+        dir: 'vars/keys'
+        extensions:
+          - 'yml'
+        ignore_unknown_extensions: True
+        name: 'web3signer_keys'
+
+  roles:
+    - role: postgresql
+      become: True
+    - role: java
+      become: True
+    - role: web3signer
+      vars:
+        web3signer_http_listen_host: '0.0.0.0'
+        web3signer_http_host_allowlist: '*'
+        web3signer_metrics_enabled: True
+        web3signer_metrics_host: '0.0.0.0'

@@ -1,0 +1,21 @@
+---
+
+ansible_python_interpreter: /usr/bin/python3
+
+# Web3Signer Role
+web3signer_db_host: 'localhost'
+web3signer_db_name: 'web3signer'
+web3signer_db_username: 'web3signer'
+web3signer_db_password: 'w3spassword'
+
+# Postgres Database Role
+postgresql_python_library: python3-psycopg2
+postgresql_hba_entries:
+  - { type: local, database: all, user: postgres, auth_method: trust }
+  - { type: host, database: web3signer, user: web3signer, address: localhost, auth_method: password }
+postgresql_users:
+  - name: "{{ web3signer_db_username }}"
+    password: "{{ web3signer_db_password }}"
+postgresql_databases:
+  - name: "{{ web3signer_db_name }}"
+

@@ -1,0 +1,13 @@
+---
+roles:
+  - name: java
+    version: '7.1.0'
+    src: lean_delivery.java
+
+  - name: postgresql
+    src: geerlingguy.postgresql
+    version: '3.0.0'
+
+  - name: web3signer
+    src: https://github.com/ConsenSys/ansible-role-web3signer
+    version: master
